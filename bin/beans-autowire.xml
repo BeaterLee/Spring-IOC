@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+
+
+	<bean id="address"
+		class="com.beater.spring.beans.autowire.Address" p:city="Beijing"
+		p:street="HuiLongGuan"></bean>
+	<bean id="car" class="com.beater.spring.beans.autowire.Car"
+		p:carName="Audi" p:price="290000" p:speed="250"></bean>
+	<!-- 
+		自动装配属性autowire
+		byName：根据bean的名字和当前bean的setter风格的属性名进行自动装配，若有匹配的，则进行自动装配，反之，则不自动装配
+		byType：根据bean的类型和当前bean的属性类型进行自动装配，若IOC容器中有一个以上类型匹配的bean，则抛异常
+	 -->
+	<bean id="person" class="com.beater.spring.beans.autowire.Person"
+		p:name="Tom" autowire="byName"></bean>
+
+</beans>

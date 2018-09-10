@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- abstract指定bean是否能被实例化，当值为true时不能实例化，该bean为模板bean(只用来被继承配置) -->
+	<bean id="address"
+		class="com.beater.spring.beans.autowire.Address" p:city="Guangzhou"
+		p:street="HuaDu" abstract="true"></bean>
+
+	<!-- bean配置的继承：使用bean的parent属性指定继承哪个bean的配置 -->
+	<bean id="address2" parent="address" p:street="BaiYun"></bean>
+	<!-- 
+		<bean id="car" class="com.beater.spring.beans.autowire.Car"
+			p:carName="BMW" p:price="2000000" p:speed="300"></bean>
+	-->
+	<bean id="car2" class="com.beater.spring.beans.autowire.Car"
+		p:carName="BENZ" p:price="3000000" p:speed="400"></bean>
+	<!-- 指定depends-on属性，可指定构建该bean必须先实例化指定的bean-->
+	<bean id="person" class="com.beater.spring.beans.autowire.Person"
+		p:name="Tom" p:address-ref="address2" p:car-ref="car2" depends-on="car"></bean>
+</beans>

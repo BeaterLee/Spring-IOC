@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<!-- 指定ioc容器扫描的基类包，自动扫描基类包下的类并配置bean实例  -->
+	<!-- 扫描的的类会使用类名首字母小写作为bean的id,组件注解(@Component,@Controller)可以填入value值为bean的id -->
+	<!-- 
+	 	context:include-filter需配合use-default-filters="false"使用
+		type:
+			annotation:注解的全类名 org.springframework.stereotype.Repository
+			assignable：bean的全类名 com.beater.spring.beans.annotation.respository.UserRespository
+	-->
+	<context:component-scan base-package="com.beater.spring.beans.annotation" use-default-filters="true">
+		<!--<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository"/>  -->
+		<!-- <context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/> -->
+		<!--<context:exclude-filter type="assignable" expression="com.beater.spring.beans.annotation.respository.UserRespository"/> -->
+	</context:component-scan>
+</beans>
